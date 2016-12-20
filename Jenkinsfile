@@ -2,7 +2,7 @@
 
 stage ('scm') {
 	node ('base') {
-		git 'https://github.com/eugeun/maven-scm.git'
+		checkout scm 
 		stash 'maven_scm'
 	}
 }
