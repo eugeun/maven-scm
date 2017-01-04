@@ -357,6 +357,7 @@
               <exclude>.repository/**</exclude><!-- for CI -->
               <exclude>.travis.yml </exclude>
               <exclude>Jenkinsfile</exclude>
+              <exclude>exclusions.txt</exclude>
             </excludes>
           </configuration>
         </plugin>
