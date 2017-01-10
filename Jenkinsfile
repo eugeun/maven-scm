@@ -9,6 +9,10 @@ node ('base') {
   	sh "${tool 'maven-3.3.9'}/bin/mvn -B -U clean compile"
   }
   
+  stage ('install') {
+  	sh "${tool 'maven-3.3.9'}/bin/mvn -B install"
+  }
+  
   stage ('package') {
   	sh "${tool 'maven-3.3.9'}/bin/mvn -B package"
   }
