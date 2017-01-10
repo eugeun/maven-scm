@@ -6,7 +6,7 @@ node ('base') {
   }
   
   stage ('compile') {
-  	sh "${tool 'maven-3.3.9'}/bin/mvn -B clean compile -U"
+  	sh "${tool 'maven-3.3.9'}/bin/mvn -B -U clean compile"
   }
   
   stage ('package') {
