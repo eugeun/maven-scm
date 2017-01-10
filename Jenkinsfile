@@ -1,28 +1,13 @@
 #!/usr/bin/env groovy
 
-node {
-	try {
-		stage ('scm') {
-			checkout scm
-		}
+stage ('scm') {
+	checkout scm
+}
 
-		stage ('build') {
-			sh "${tool 'maven-3.3.9'}/bin/mvn -B clean verify"
-			junit '**/target/surefire-reports/TEST-*.xml'
-		}
-		currentBuild.result = 'SUCCESS'
+stage ('compile') {
+	sh "${tool 'maven-3.3.9'}/bin/mvn -B clean compile -U -Dmaven.skip.test"
+}
 
-	} catch (Exception err) {
-	    currentBuild.result = 'FAILURE'
-	}
-	finally {
-	    def myBuildInfo = [:]
-	    def myCustomDataMap = [:]
-	    myBuildInfo["build_status_message"] = currentBuild.result
-	    myCustomDataMap["jenkins_data"] = myBuildInfo
-
-	    step([$class: 'InfluxDbPublisher',
-	          target: 'http://influxdb:8086,jenkinsdb',
-	          customDataMap: myCustomDataMap])
-	}
+stage ('package') {
+	sh "${tool 'maven-3.3.9'}/bin/mvn -B clean package -Dmaven.skip.test"
 }
