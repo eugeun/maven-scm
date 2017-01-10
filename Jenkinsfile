@@ -6,11 +6,11 @@ node ('base') {
   }
   
   stage ('compile') {
-  	sh "${tool 'maven-3.3.9'}/bin/mvn -B clean compile -U -Dmaven.skip.test"
+  	sh "${tool 'maven-3.3.9'}/bin/mvn -B clean compile -U"
   }
   
   stage ('package') {
-  	sh "${tool 'maven-3.3.9'}/bin/mvn -B package -Dmaven.skip.test"
+  	sh "${tool 'maven-3.3.9'}/bin/mvn -B package"
   }
 
   stage ('update-version') {
