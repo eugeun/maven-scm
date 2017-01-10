@@ -12,4 +12,8 @@ node ('base') {
   stage ('package') {
   	sh "${tool 'maven-3.3.9'}/bin/mvn -B clean package -Dmaven.skip.test"
   }
+
+  stage ('update-version')
+    sh "${tool 'maven-3.3.9'}/bin/mvn -B release:update-versions -B -Dmaven.skip.test"
+  }
 }
