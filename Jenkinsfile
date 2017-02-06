@@ -1,9 +1,16 @@
 #!/usr/bin/env groovy
 
-stage ('build') {
-    node ('base') {
-        git 'https://github.com/eugeun/maven-scm.git'
-        sh "${tool 'maven-3.3.9'}/bin/mvn -B clean verify"
-        junit '**/target/surefire-reports/TEST-*.xml'
+node ('base') {
+    stage ('Get Version') {
+        checkout scm
+		def v = version ()
+		if (v) {
+			echo "Building version ${v}"
+		}
     }
+}
+
+def version() {
+	def matcher = readFile('maven-scm-api/pom.xml') =~ '<version>(.+)</version>'
+	matcher ? matcher[0][1] : null
 }
