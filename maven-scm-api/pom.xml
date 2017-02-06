@@ -29,6 +29,7 @@
   </parent>
 
   <artifactId>maven-scm-api</artifactId>
+  <version>1.9.7-SNAPSHOT</version>
 
   <name>Maven SCM API</name>
   <description>The SCM API provides mechanisms to manage all SCM tools.</description>
