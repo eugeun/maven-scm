@@ -30,7 +30,7 @@
 
   <groupId>org.apache.maven.scm</groupId>
   <artifactId>maven-scm</artifactId>
-  <version>1.9.6</version>
+  <version>1.9.7-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Maven SCM</name>
@@ -112,7 +112,7 @@
 
   <scm>
     <developerConnection>scm:git:ssh://git@github.com/eugeun/maven-scm.git</developerConnection>
-    <tag>maven-scm-1.9.6</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
