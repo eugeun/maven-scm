@@ -111,10 +111,7 @@
   </modules>
 
   <scm>
-    <connection>scm:git:https://git-wip-us.apache.org/repos/asf/maven-scm.git</connection>
-    <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/maven-scm.git</developerConnection>
-    <url>https://github.com/apache/maven-scm/tree/${project.scm.tag}</url>
-    <tag>master</tag>
+    <developerConnection>scm:git:ssh://git@github.com/eugeun/maven-scm.git</developerConnection>
   </scm>
 
   <issueManagement>
@@ -324,13 +321,6 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-release-plugin</artifactId>
-          <configuration>
-            <autoVersionSubmodules>true</autoVersionSubmodules>
-          </configuration>
-        </plugin>
-        <plugin>
           <groupId>org.codehaus.modello</groupId>
           <artifactId>modello-maven-plugin</artifactId>
           <version>1.8.2</version>
@@ -457,6 +447,15 @@
           </dependency>
         </dependencies>
       </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.3</version>
+          <configuration>
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <preparationGoals>clean</preparationGoals>
+          </configuration>
+        </plugin>
     </plugins>
 
   </build>
